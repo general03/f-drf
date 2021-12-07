@@ -1,0 +1,20 @@
+
+<h1>Exemple FRONT</h1>
+
+<ul id="result"></ul>
+
+
+<script>
+
+    fetch('http://localhost:8001/country/?format=json')
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(element) {
+        for( el in element ) {
+            // console.log(element[el]);
+            document.getElementById('result').innerHTML += '<li>' + element[el].code + '</li>'
+        }
+    });
+
+</script>
