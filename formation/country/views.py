@@ -14,9 +14,10 @@ from country.models import Country
 #     return JsonResponse(cs.data)
 
 def test(request):
-    cs = CountrySerializer(data={'code': 'fr', 'name': 'France'})
+    cs = CountrySerializer(data={'code': 'fr', 'name': 'France'}, context={'request': request})
     print(cs.is_valid())
-    return JsonResponse(cs.errors)
+    # cs.save()
+    return JsonResponse(cs.data)
 
 
 # def test(request):

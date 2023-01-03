@@ -6,7 +6,6 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework import permissions
 from rest_framework import viewsets
 from rest_framework.views import APIView
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.decorators import action
@@ -20,7 +19,7 @@ class CountryViewSet(viewsets.ModelViewSet):
     lookup_field = 'code'
 
     # permission_classes = [permissions.IsAuthenticated]
-    permission_classes = [GroupPermission]
+    # permission_classes = [GroupPermission]
 
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['code']
