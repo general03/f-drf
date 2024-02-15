@@ -38,16 +38,23 @@ class CountryViewSet(viewsets.ModelViewSet):
     #     return Response(serializer.data)
 
 # APIView
-class ListCountry(APIView):
+class ListCountryAPIView(APIView):
 
     def get(self, request, format=None):
         print(request.GET)
         serializer = CountrySerializer(Country.objects.all(), many=True)
         return Response(serializer.data)
+    
+# ViewSet
+class ListCountryViewSet(viewsets.ViewSet):
 
+    queryset = Country.objects.all()
+    def list(self, request):
+        serializer = CountrySerializer(self.queryset, many=True)
+        return Response(serializer.data)
 
-# Generic views
-class ListCountryGeneric(generics.ListCreateAPIView):
+# GenericAPIViews
+class ListCountryGenericAPIView(generics.ListCreateAPIView):
 
     queryset = Country.objects.all()
     serializer_class = CountrySerializer

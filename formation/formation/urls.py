@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from country.views import test, front
-from country.viewset import CountryViewSet, ListCountry, ListCountryGeneric
+from country.viewset import CountryViewSet, ListCountryAPIView, ListCountryGenericAPIView, ListCountryViewSet
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -30,8 +30,8 @@ urlpatterns = [
     path('api/', include('rest_framework.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
     
-    path('country-apiview/', ListCountry.as_view()),
-    path('country-genericview/', ListCountryGeneric.as_view()),
+    path('country-apiview/', ListCountryAPIView.as_view()),
+    path('country-genericview/', ListCountryGenericAPIView.as_view()),
 
     path('front/', front),
 
