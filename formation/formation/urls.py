@@ -20,6 +20,7 @@ from django.urls import include
 from country.views import test, front
 from country.viewset import CountryViewSet, ListCountryAPIView, ListCountryGenericAPIView, ListCountryViewSet
 from rest_framework import routers
+from rest_framework_simplejwt import views as jwt_views
 
 router = routers.DefaultRouter()
 router.register(r'country', CountryViewSet)
@@ -36,4 +37,6 @@ urlpatterns = [
     path('front/', front),
 
     path('', include(router.urls)),
+
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
